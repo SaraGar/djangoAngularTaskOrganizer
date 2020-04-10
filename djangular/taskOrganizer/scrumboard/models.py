@@ -2,11 +2,13 @@ from django.db import models
 
 class List(models.Model):
     name = models.CharField(max_length=50)
+    objects = models.Manager() 
     
     def __str__(self):
         return "List: {}".format(self.name)
 
 class Card(models.Model):
+    objects = models.Manager() 
     title = models.CharField(max_length=100)
     description = models.TextField(blank=True)
     list= models.ForeignKey(List, related_name = "cards", on_delete=models.CASCADE)
